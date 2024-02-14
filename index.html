@@ -10,31 +10,36 @@
     <div class="nav">
         <h1>Rock Paper Scissors</h1>
     </div>
-    
-    <div class="choices">
-        <div class="choice" id="rock">
-            <img src="rock.png">
-        </div>
-        <div class="choice" id="paper">
-            <img src="paper.png">
-        </div>
-        <div class="choice" id="scissors">
-            <img src="scissors.png">
-        </div>
-    </div>
-    <div class="scoreboard">
+    <div class="video-container">
         <div class="score">
-            <p id="yourscore" style="padding-left:20px">0</p>
+            <p id="yourscore" style="padding-left:20px;margin-top: 20px;">0</p>
             <p>You</p>
         </div>
-        <div class="score">
-            <p id="compscore" style="padding-left:60px">0</p>
-            <p>Computer</p>
-        </div>
+        <div>
+    <video id="myVideo" width="1040" height="350" autoplay muted> <source id="Videosource" src="RockScissor.mp4" type="Video/mp4"></video>
     </div>
+    
+    <div class="score">
+        <p id="compscore" style=" padding-left:20px;margin-right: 20px;">0</p>
+        <p style="padding-right: 40px;">Comp</p>
+    </div>
+</div>
+<div class="choices">
+    <div class="choice" id="rock">
+        <img src="rock.png">
+    </div>
+    <div class="choice" id="paper">
+        <img src="paper.png">
+    </div>
+    <div class="choice" id="scissors">
+        <img src="scissors.png">
+    </div>
+</div>
     <div class="result">
         <p id="message">play your move</p>
     </div>
+    
+   
     <script src="script.js"></script>
 </body>
 </html>
