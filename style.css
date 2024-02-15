@@ -3,17 +3,18 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 .nav{
-    background-color:brown;
+    background-color:black;
     width:1300px;
     height:50px;
 }
 body{
-    background-color: #c7f88b;
+    background-color: #000053;
 }
 h1{
-    color:rgb(7, 31, 51);
+    color:white;
     text-align: center;
     line-height: 1.5;
 }
@@ -48,7 +49,7 @@ img{
     margin-bottom: 20px;
 }
 .score{
-    color:black;
+    color:white;
     font-style: italic;
     font-weight: bolder;
 }
@@ -81,10 +82,84 @@ img{
     align-items: center;
     margin-left: 30px;
 }
-#text{
-    color:red;
-}
+
 .image{
-    width: 500px;
-    height: 500px;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+.divimg{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    gap: 30px;
+}
+.icon i{
+    width: 80px;
+    height: 70px;
+}
+a i{
+    cursor: pointer;
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .centered {
+    position: absolute;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: xx-large;
+    top: 15%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+  .icon{
+    position: absolute;
+    top: 74%;
+    left: 34%;
+    font-size: 40px;
+    gap: 90px;
+
+  }
+  .nav2bar{
+    position: absolute;
+    width:1300px;
+    height:70px;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: xx-large;
+    padding: 10px;
+    color: white;
+    background-color: black;
+  }
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    position: absolute;
+    font-size: xx-large;
+    font-weight: bold;
+    top:20%;
+    left:44%;
+    animation-name: fadeIn;
+    color: #000;
 }

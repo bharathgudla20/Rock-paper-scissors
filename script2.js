@@ -10,9 +10,8 @@
             var newText = getUrlParameter('text');
             let decider=document.getElementById("text");
             decider.innerHTML=newText;
-            if(newText=="You Win")
-            decider.style.color="green";
-            else
-            decider.style.color="red";
+            
+
+
 
             

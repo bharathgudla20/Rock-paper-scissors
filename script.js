@@ -15,6 +15,7 @@ function comp(userchoice)
     let div=document.getElementById("message");
     var video = document.getElementById('myVideo');
     let vidsrc=document.getElementById("Videosource");
+    let textElement = document.getElementById("text2");
     if(userchoice=="paper" )
     {
         if(cmpchoice=="rock"){
@@ -22,18 +23,26 @@ function comp(userchoice)
         display.innerHTML="You won,paper beats rock";
         div.style.backgroundColor="green";
         vidsrc.src="PaperRock.mp4";
+        textElement.innerHTML="You win!";
+        showTextWithDelay(2000,2000);
+        
+        
         }
         else if(cmpchoice=="scissors"){
         cmp_score++;
         display.innerHTML="You lost,scissors beats rock";
         div.style.backgroundColor="red";
         vidsrc.src="PaperScissor.mp4";
+        textElement.innerHTML="You Lose!";
+        showTextWithDelay(2000,2000);
         }
         else{
         draw++;
-        display.innerHTML="Its a draw";
+        display.innerHTML="its a draw";
         div.style.backgroundColor="darkblue";
         vidsrc.src="PaperRock.mp4";
+        textElement.innerHTML="Draw!";
+        showTextWithDelay(2000,2000);
         }
         video.load();
     }
@@ -44,6 +53,8 @@ function comp(userchoice)
         user_score++;
         div.style.backgroundColor="green";
         vidsrc.src="RockScissor.mp4";
+        textElement.innerHTML="You win!";
+        showTextWithDelay(2000,2000);
         }
         else if(cmpchoice=="paper")
         {
@@ -51,12 +62,16 @@ function comp(userchoice)
         cmp_score++;
         div.style.backgroundColor="red";
         vidsrc.src="RockPaper.mp4";
+        textElement.innerHTML="You Lose!";
+        showTextWithDelay(2000,2000);
         }
         else{
         draw++;
         display.innerHTML="Its a draw";
         div.style.backgroundColor="darkblue";
         vidsrc.src="RockPaper.mp4";
+        textElement.innerHTML="Draw!";
+        showTextWithDelay(2000,2000);
         }
         video.load();
     }
@@ -66,6 +81,8 @@ function comp(userchoice)
         display.innerHTML="You won,scissors beats paper";
         div.style.backgroundColor="green";
         vidsrc.src="ScissorPaper.mp4";
+        textElement.innerHTML="You Win!";
+        showTextWithDelay(2000,2000);
         }
         else if(cmpchoice=="rock")
         {
@@ -73,19 +90,23 @@ function comp(userchoice)
         display.innerHTML="You lost,rock beats scissors";
         div.style.backgroundColor="red";
         vidsrc.src="ScissorRock.mp4";
+        textElement.innerHTML="You Lose!";
+        showTextWithDelay(2000,2000);
         }
         else{
         draw++;
         display.innerHTML="Its a draw";
         div.style.backgroundColor="darkblue";
         vidsrc.src="PaperRock.mp4";
+        textElement.innerHTML="Draw!";
+        showTextWithDelay(2000,2000);
         }
         video.load();
     }
-        
+      
         if(user_score==3)
         {
-            var textToPass = 'You Win'; // The text you want to pass to page2.html
+            var textToPass = 'Victory!'; // The text you want to pass to page2.html
             window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);
             
             
@@ -93,7 +114,7 @@ function comp(userchoice)
         }
         if(cmp_score==3)
         {
-            var textToPass = 'Computer Win'; // The text you want to pass to page2.html
+            var textToPass = 'Defeat!'; // The text you want to pass to page2.html
             window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);
         
             
@@ -103,10 +124,19 @@ function comp(userchoice)
     let computer=document.getElementById("compscore");
     userp.innerHTML=user_score;
     computer.innerHTML=cmp_score;
-    
+    // Get reference to the text element
+function showTextWithDelay(delay, duration) {
+    setTimeout(function() {
+        textElement.classList.remove("hidden");
+        textElement.classList.add("visible");
 
-    
-    
+        // Hide the text after the specified duration
+        setTimeout(function() {
+            textElement.classList.remove("visible");
+            textElement.classList.add("hidden");
+        }, duration);
+    }, delay);
+}
 }
 const choices=document.querySelectorAll(".choice");
 choices.forEach((choice) => {
