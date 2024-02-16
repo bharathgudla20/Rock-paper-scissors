@@ -20,9 +20,8 @@ function comp(userchoice)
     {
         if(cmpchoice=="rock"){
         user_score++;
-        display.innerHTML="You won,paper beats rock";
-        div.style.backgroundColor="green";
-        vidsrc.src="PaperRock.mp4";
+        setTimeout(dis,2000,"You won,paper beats rock","green");
+        vidsrc.src="PaperRock2.mp4";
         textElement.innerHTML="You win!";
         showTextWithDelay(2000,2000);
         
@@ -30,17 +29,15 @@ function comp(userchoice)
         }
         else if(cmpchoice=="scissors"){
         cmp_score++;
-        display.innerHTML="You lost,scissors beats rock";
-        div.style.backgroundColor="red";
-        vidsrc.src="PaperScissor.mp4";
+        setTimeout(dis,2000,"You lost,scissors beats rock","red");
+        vidsrc.src="PaperScissor2.mp4";
         textElement.innerHTML="You Lose!";
         showTextWithDelay(2000,2000);
         }
         else{
         draw++;
-        display.innerHTML="its a draw";
-        div.style.backgroundColor="darkblue";
-        vidsrc.src="PaperRock.mp4";
+        setTimeout(dis,2000,"its a draw","darkblue");
+        vidsrc.src="PaperPaper.mp4";
         textElement.innerHTML="Draw!";
         showTextWithDelay(2000,2000);
         }
@@ -49,27 +46,24 @@ function comp(userchoice)
     else if(userchoice=="rock" )
     {
         if(cmpchoice=="scissors"){
-            display.innerHTML="You won,rock beats scissor";
+            setTimeout(dis,2000,"You won,rock beats scissor","green");
         user_score++;
-        div.style.backgroundColor="green";
-        vidsrc.src="RockScissor.mp4";
+        vidsrc.src="RockScissor2.mp4";
         textElement.innerHTML="You win!";
         showTextWithDelay(2000,2000);
         }
         else if(cmpchoice=="paper")
         {
-            display.innerHTML="You lost,paper beats rock";
+            setTimeout(dis,2000,"You lost,paper beats rock","red");
         cmp_score++;
-        div.style.backgroundColor="red";
-        vidsrc.src="RockPaper.mp4";
+        vidsrc.src="RockPaper2.mp4";
         textElement.innerHTML="You Lose!";
         showTextWithDelay(2000,2000);
         }
         else{
         draw++;
-        display.innerHTML="Its a draw";
-        div.style.backgroundColor="darkblue";
-        vidsrc.src="RockPaper.mp4";
+        setTimeout(dis,2000,"Its a draw","darkblue");
+        vidsrc.src="RockRock.mp4";
         textElement.innerHTML="Draw!";
         showTextWithDelay(2000,2000);
         }
@@ -78,26 +72,23 @@ function comp(userchoice)
     else{
         if(cmpchoice=="paper"){
         user_score++;
-        display.innerHTML="You won,scissors beats paper";
-        div.style.backgroundColor="green";
-        vidsrc.src="ScissorPaper.mp4";
+        setTimeout(dis,2000,"You won,scissors beats paper","green");
+        vidsrc.src="ScissorPaper2.mp4";
         textElement.innerHTML="You Win!";
         showTextWithDelay(2000,2000);
         }
         else if(cmpchoice=="rock")
         {
         cmp_score++;
-        display.innerHTML="You lost,rock beats scissors";
-        div.style.backgroundColor="red";
-        vidsrc.src="ScissorRock.mp4";
+        setTimeout(dis,2000,"You lost,rock beats scissors","red");
+        vidsrc.src="ScissorRock2.mp4";
         textElement.innerHTML="You Lose!";
         showTextWithDelay(2000,2000);
         }
         else{
         draw++;
-        display.innerHTML="Its a draw";
-        div.style.backgroundColor="darkblue";
-        vidsrc.src="PaperRock.mp4";
+        setTimeout(dis,2000,"Its a draw","darkblue");
+        vidsrc.src="ScissorScissor.mp4";
         textElement.innerHTML="Draw!";
         showTextWithDelay(2000,2000);
         }
@@ -106,19 +97,26 @@ function comp(userchoice)
       
         if(user_score==3)
         {
+            setTimeout(userWin,3000);  
+        }
+        function userWin()
+        {
             var textToPass = 'Victory!'; // The text you want to pass to page2.html
-            window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);
-            
-            
-            
+            window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);  
         }
         if(cmp_score==3)
         {
+            setTimeout(compWin,3000);     
+        }
+        function compWin()
+        {
             var textToPass = 'Defeat!'; // The text you want to pass to page2.html
             window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);
-        
-            
-            
+        }
+        function dis(message1,color1)
+        {
+            display.innerHTML=message1;
+            div.style.backgroundColor=color1;
         }
     let userp=document.getElementById("yourscore");
     let computer=document.getElementById("compscore");
@@ -129,7 +127,7 @@ function showTextWithDelay(delay, duration) {
     setTimeout(function() {
         textElement.classList.remove("hidden");
         textElement.classList.add("visible");
-
+        
         // Hide the text after the specified duration
         setTimeout(function() {
             textElement.classList.remove("visible");
