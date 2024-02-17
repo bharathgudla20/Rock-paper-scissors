@@ -2,7 +2,7 @@
 let user_score=0;
 let cmp_score=0; 
 let draw=0;
-console.log("Sumant11h");
+
 
 function comp(userchoice)
 {
@@ -16,6 +16,9 @@ function comp(userchoice)
     var video = document.getElementById('myVideo');
     let vidsrc=document.getElementById("Videosource");
     let textElement = document.getElementById("text2");
+    let modal=document.getElementById("modalbox");
+    let blurbg=document.getElementById("bgmodal");
+    let res=document.getElementById("text");
     if(userchoice=="paper" )
     {
         if(cmpchoice=="rock"){
@@ -23,7 +26,7 @@ function comp(userchoice)
         setTimeout(dis,2000,"You won,paper beats rock","green");
         vidsrc.src="PaperRock2.mp4";
         textElement.innerHTML="You win!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         
         
         }
@@ -32,14 +35,14 @@ function comp(userchoice)
         setTimeout(dis,2000,"You lost,scissors beats rock","red");
         vidsrc.src="PaperScissor2.mp4";
         textElement.innerHTML="You Lose!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         else{
         draw++;
         setTimeout(dis,2000,"its a draw","darkblue");
         vidsrc.src="PaperPaper.mp4";
         textElement.innerHTML="Draw!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         video.load();
     }
@@ -50,7 +53,7 @@ function comp(userchoice)
         user_score++;
         vidsrc.src="RockScissor2.mp4";
         textElement.innerHTML="You win!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         else if(cmpchoice=="paper")
         {
@@ -58,14 +61,14 @@ function comp(userchoice)
         cmp_score++;
         vidsrc.src="RockPaper2.mp4";
         textElement.innerHTML="You Lose!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         else{
         draw++;
         setTimeout(dis,2000,"Its a draw","darkblue");
         vidsrc.src="RockRock.mp4";
         textElement.innerHTML="Draw!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         video.load();
     }
@@ -75,7 +78,7 @@ function comp(userchoice)
         setTimeout(dis,2000,"You won,scissors beats paper","green");
         vidsrc.src="ScissorPaper2.mp4";
         textElement.innerHTML="You Win!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         else if(cmpchoice=="rock")
         {
@@ -83,45 +86,51 @@ function comp(userchoice)
         setTimeout(dis,2000,"You lost,rock beats scissors","red");
         vidsrc.src="ScissorRock2.mp4";
         textElement.innerHTML="You Lose!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         else{
         draw++;
         setTimeout(dis,2000,"Its a draw","darkblue");
         vidsrc.src="ScissorScissor.mp4";
         textElement.innerHTML="Draw!";
-        showTextWithDelay(2000,2000);
+        showTextWithDelay(2000,1000);
         }
         video.load();
     }
-      
+        
         if(user_score==3)
         {
-            setTimeout(userWin,3000);  
+            res.innerHTML="Victory!";
+            
+            setTimeout(decider2,3000);  
         }
-        function userWin()
-        {
-            var textToPass = 'Victory!'; // The text you want to pass to page2.html
-            window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);  
-        }
+       
         if(cmp_score==3)
         {
-            setTimeout(compWin,3000);     
+            res.innerHTML="Defeat!";
+            
+            setTimeout(decider2,3000);     
         }
-        function compWin()
-        {
-            var textToPass = 'Defeat!'; // The text you want to pass to page2.html
-            window.location.href = 'winlose.html?text=' + encodeURIComponent(textToPass);
-        }
+        function decider2()
+       {
+        blurbg.classList.add("blur");
+            modal.classList.add("openmodaldialog");
+       }
+        let userp=document.getElementById("yourscore");
+    let computer=document.getElementById("compscore");
+    setTimeout(updatescore,2000);
+    function updatescore()
+    {
+        userp.innerHTML=user_score;
+    computer.innerHTML=cmp_score;
+    }
+       
         function dis(message1,color1)
         {
             display.innerHTML=message1;
             div.style.backgroundColor=color1;
         }
-    let userp=document.getElementById("yourscore");
-    let computer=document.getElementById("compscore");
-    userp.innerHTML=user_score;
-    computer.innerHTML=cmp_score;
+    
     // Get reference to the text element
 function showTextWithDelay(delay, duration) {
     setTimeout(function() {
@@ -143,3 +152,28 @@ choices.forEach((choice) => {
         comp(userchoice);
     }); 
 });
+
+let r1=document.getElementById("rimg");
+let p1=document.getElementById("pimg");
+let s1=document.getElementById("simg");
+function submitPoll() {
+    document.getElementById("rockimg").disabled = true;
+
+    document.getElementById("paperimg").disabled = true;
+    document.getElementById("scissorsimg").disabled = true;
+    r1.classList.add("blur");
+    p1.classList.add("blur");
+    s1.classList.add("blur");
+    setTimeout(function() {
+        r1.classList.remove("blur");
+        p1.classList.remove("blur");
+        s1.classList.remove("blur");
+        document.getElementById("rockimg").disabled = false;
+    document.getElementById("paperimg").disabled = false;
+        document.getElementById("scissorsimg").disabled = false;
+    }, 3000);
+}
+
+document.getElementById("rockimg").addEventListener("click", submitPoll);
+document.getElementById("paperimg").addEventListener("click", submitPoll);
+document.getElementById("scissorsimg").addEventListener("click", submitPoll);

@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/e14b648479.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+    <div id="bgmodal">
     <div class="nav">
         <h1>Rock Paper Scissors</h1>
     </div>
@@ -16,9 +20,7 @@
             <p>You</p>
         </div>
         
-    <video id="myVideo" width="1040" height="350" autoplay muted> <source id="Videosource" src="RockScissor2.mp4" type="Video/mp4"></video>
-    
-    
+        <video id="myVideo" width="1040" height="350" autoplay muted> <source id="Videosource" src="RockScissor2.mp4" type="Video/mp4"></video>
     <div class="score">
         <p id="compscore" style=" padding-left:20px;margin-right: 20px;">0</p>
         <p style="padding-right: 40px;">Comp</p>
@@ -26,20 +28,29 @@
 </div>
 <div class="choices">
     <div class="choice" id="rock">
-        <img src="rock.png">
+       <button id="rockimg"> <img id="rimg" src="rock.png"></button>
     </div>
     <div class="choice" id="paper">
-        <img src="paper.png">
+      <button id="paperimg">  <img id="pimg" src="paper.png"></button>
     </div>
     <div class="choice" id="scissors">
-        <img src="scissors.png">
+      <button id="scissorsimg">  <img id="simg" src="scissors.png"></button>
     </div>
 </div>
     <div class="result">
         <p id="message">play your move</p>
     </div>
-    
     <div id="text2" class="hidden"></div>
+</div>
+    <div class="container" id="modalbox">
+        <div id="text"  style="font-family: 'Times New Roman', Times, serif;" class="nav2bar">navbar</div>
+        <img class="image" src="rps wallpaper.jpg">
+      
+        <div class="icon">
+        <a href="index.html"><i  class="fa-solid fa-rotate"></i></a>
+        <a href="index.html"><i class="fa-solid fa-house"></i></a>
+        </div>
+    </div>
     
     <script src="script.js"></script>
 </body>
